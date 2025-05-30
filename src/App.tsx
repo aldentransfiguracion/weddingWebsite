@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Rsvp } from "./pages/Rsvp";
+import { Registry } from "./pages/Registry";
+import { Schedule } from "./pages/Schedule";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { NavBar } from "./components/NavBar";
 
-function App() {
-  const [count, setCount] = useState(0)
+const theme = createTheme({
+  typography: {
+    fontFamily: "Montserrat, system-ui, sans-serif",
+    body1: {
+      fontFamily: "Montserrat, system-ui, sans-serif",
+      fontSize: "1rem",
+    },
+    h1: {
+      fontFamily: "Playfair Display, serif",
+      fontSize: "3rem",
+    },
+  },
+});
 
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rsvp" element={<Rsvp />} />
+          <Route path="/registry" element={<Registry />} />
+          <Route path="/schedule" element={<Schedule />} />
+        </Routes>
+      </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
