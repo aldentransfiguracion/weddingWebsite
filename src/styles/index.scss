@@ -1,0 +1,14 @@
+@use "./base/fonts.scss";
+@use "./base/reset.scss";
+
+h1,
+h6 {
+  font-family: "Playfair Display";
+}
+
+body,
+p,
+span {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
+    sans-serif;
+}
